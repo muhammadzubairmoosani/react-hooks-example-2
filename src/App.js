@@ -1,32 +1,33 @@
 import "./App.css";
 
 /////////////////////// class component example ///////////////////////////
-// import React from "react";
+import React from "react";
 
-// class App extends React.Component {
-//   state = { title: document.title };
+class App extends React.Component {
+  state = { title: document.title };
 
-//   componentDidMount() {
-//     document.title = this.state.title;
-//   }
+  componentDidMount() {
+    document.title = this.state.title;
+  }
 
-//   componentDidUpdate(_, prevProps) {
-//     if (this.state.title !== prevProps.title) {
-//       document.title = this.state.title;
-//     }
-//   }
-//   render() {
-//     return (
-//       <div className="App">
-//         <input
-//           type="text"
-//           value={this.state.title}
-//           onChange={(event) => this.setState({ title: event.target.value })}
-//         />
-//       </div>
-//     );
-//   }
-// }
+  componentDidUpdate(_, prevProps) {
+    if (this.state.title !== prevProps.title) {
+      document.title = this.state.title;
+    }
+  }
+  render() {
+    return (
+      <div className="App">
+        <input
+          type="text"
+          value={this.state.title}
+          onChange={(event) => this.setState({ title: event.target.value })}
+        />
+      </div>
+    );
+  }
+}
+
 
 
 /////////////////////// function component example ///////////////////////////
@@ -49,6 +50,7 @@ import "./App.css";
 //     </div>
 //   );
 // };
+
 
 
 ///////////////////////  Custom Hooks example ///////////////////////////
@@ -76,58 +78,60 @@ import "./App.css";
 //   );
 // };
 
+
+
 ///////////////////////  Real-Life example ///////////////////////////
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
 
-const App = () => {
-  const [ users, setUsers ] = useState([]);
-  const [ showDetails, setShowDetails ] = useState(false);
+// const App = () => {
+//   const [ users, setUsers ] = useState([]);
+//   const [ showDetails, setShowDetails ] = useState(false);
 
-  const fetchUsers = async () => {
-    const response = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+//   const fetchUsers = async () => {
+//     const response = await axios.get(`https://jsonplaceholder.typicode.com/users`);
 
-    setUsers(response.data);
-  };
+//     setUsers(response.data);
+//   };
 
-  useEffect( () => { fetchUsers(users) }, [ users ] );
+//   useEffect( () => { fetchUsers(users) }, [ users ] );
 
-  const handleClick = event => { setShowDetails(!showDetails) };
+//   const handleClick = event => { setShowDetails(!showDetails) };
 
-  return (
-    <div>
-      {
-        users.map((user) => (
-          <ul key={ user.id }>
-            <li>
-              <strong>{ user.name }</strong>
-              <div>
-                <button
-                  onClick={ handleClick }
-                >
-                  { showDetails ? "Close Additional Info" : "More Info"  }
-              </button>
-               { showDetails &&
-                 <div className="additional-info">
-                   <p>
-                     { `Email: ${ user.email }` }
-                   </p>
-                   <p>
-                     { `Phone: ${ user.phone }` }
-                   </p>
-                   <p>
-                     { `Website: ${ user.website }` }
-                   </p>
-                 </div>
-               }
-              </div>
-            </li>
-          </ul>
-        ))
-      }
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       {
+//         users.map((user) => (
+//           <ul key={ user.id }>
+//             <li>
+//               <strong>{ user.name }</strong>
+//               <div>
+//                 <button
+//                   onClick={ handleClick }
+//                 >
+//                   { showDetails ? "Close Additional Info" : "More Info"  }
+//               </button>
+//                { showDetails &&
+//                  <div className="additional-info">
+//                    <p>
+//                      { `Email: ${ user.email }` }
+//                    </p>
+//                    <p>
+//                      { `Phone: ${ user.phone }` }
+//                    </p>
+//                    <p>
+//                      { `Website: ${ user.website }` }
+//                    </p>
+//                  </div>
+//                }
+//               </div>
+//             </li>
+//           </ul>
+//         ))
+//       }
+//     </div>
+//   )
+// }
 
 
 
