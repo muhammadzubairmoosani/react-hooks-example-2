@@ -92,7 +92,7 @@ const App = () => {
 
   useEffect( () => { fetchUsers(users) }, [ users ] );
 
-  const n = event => { setShowDetails(!showDetails) };
+  const handleClick = event => { setShowDetails(!showDetails) };
 
   return (
     <div>
@@ -103,7 +103,7 @@ const App = () => {
               <strong>{ user.name }</strong>
               <div>
                 <button
-                  onClick={ n }
+                  onClick={ handleClick }
                 >
                   { showDetails ? "Close Additional Info" : "More Info"  }
               </button>
